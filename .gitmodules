@@ -1,0 +1,3 @@
+[submodule "themes/mabuya"]
+	path = themes/mabuya
+	url = https://github.com/hejops/mabuya

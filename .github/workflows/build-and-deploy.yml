@@ -15,6 +15,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # to prevent default Jekyll build, set Source to GitHub Actions
+  # https://github.com/hejops/hejops.github.io/settings/pages
   build:
     runs-on: ubuntu-latest
     steps:
@@ -25,7 +27,7 @@ jobs:
       - name: Install Zola
         uses: taiki-e/install-action@zola
       - name: Build site
-        run: ls -lthr themes/mabuya ; zola build
+        run: zola build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload site artifact

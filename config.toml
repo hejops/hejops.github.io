@@ -1,1 +1,35 @@
-themes/mabuya/config.toml
+theme       = "mabuya"
+base_url    = "https://hejops.github.io/"
+title       = "hejops"
+author      = "hejops"
+description = "some description"
+
+compile_sass       = true
+generate_feeds     = true
+feed_filenames     = [ "rss.xml", "atom.xml" ]
+minify_html        = true
+build_search_index = false
+taxonomies         = [ { name = "tags", feed = true } ]
+
+[markdown]
+highlight_code  = true
+highlight_theme = "monokai"
+# More syntax highlighting themes: https://www.getzola.org/documentation/getting-started/configuration/#syntax-highlighting
+smart_punctuation = true
+
+[extra]
+author     = "hejops"
+github     = "https://github.com/hejops"
+timeformat = "%Y-%m-%d"
+# email      = ""
+
+[[extra.menu]]
+name = "About"
+url  = "about"
+
+[[extra.menu]]
+name = "Tags"
+url  = "tags"
+
+[extra.footer]
+info = 'Powered by <a href="https://www.getzola.org" target="_blank">Zola</a> and <a href="https://github.com/semanticdata/mabuya">Mabuya</a>.'

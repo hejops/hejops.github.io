@@ -23,7 +23,7 @@ jobs:
       - name: Install Zola
         uses: taiki-e/install-action@zola
       - name: Build site
-        run: pwd ; ls -lthr ; zola build
+        run: ls -lthr themes ; zola build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload site artifact

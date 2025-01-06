@@ -130,7 +130,7 @@ func queryDBParallelSafe() []int {
 
 Go has excellent [built-in tooling][tool] for detecting data races, and you can
 run `go run -race main.go` to verify that a data race occurs in
-`queryDBParallel` version but not `queryDBParallelSafe`.
+`queryDBParallel` but not `queryDBParallelSafe`.
 However, we didn't exactly have the luxury of just running the data race
 detector locally at the time, because the larger function that housed the
 spurious code was fairly monolithic.
@@ -255,9 +255,10 @@ main.go:46:results[i] = queryDB(query)
 
 This check operates on the (admittedly flimsy) heuristic that the only safe
 goroutine is a "pure" one.
-That is to say, any operand of an assignment (=, not :=, which is a declaration)
-can only have been explicitly passed as an argument to the goroutine, and not
-implicitly (e.g. some variable captured from the outer scope).
+That is to say, any operand of an assignment (`=`, not `:=`, which is a
+declaration) can only have been explicitly passed as an argument to the
+goroutine, and not implicitly (e.g. some variable captured from the outer
+scope).
 This heuristic is unlikely to hold for anything but the simplest of goroutines,
 so it probably shouldn't be used in real production code.
 Still, in principle, keeping the surface area of a goroutine as small as

@@ -6,10 +6,11 @@ SHELL := bash
 
 new:
 	f=./content/$$(date -I)-untitled.md
+	if [[ ! -f $$f ]] ; then
 	{
 # leading - in an EOF block is always discarded
 		echo ---
-		cat <<EOF
+		cat <<- EOF
 			title:
 			description:
 			date:
@@ -17,5 +18,6 @@ new:
 			tags: []
 		EOF
 		echo ---
-	} > $$f
-	if [ -t 1 ] ; then ${EDITOR} $$f ; fi
+	} > "$$f"
+	fi
+	if [ -t 1 ] ; then ${EDITOR} "$$f" ; fi
